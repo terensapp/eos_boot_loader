@@ -31,12 +31,12 @@ function run_init() {
 
    echo "SWI file is $SWI"
 
-   [[ $SWI == file* ]] || {
+   [[ $SWI == flash* ]] || {
       echo "SWI must be type file as only file is currently supported"
       return 3
    }
 
-   swi=$(echo $SWI | sed 's/file://g')
+   swi=$(echo $SWI | sed "s|flash:|/mnt/flash|g")
    echo "Normalized SWI file is $swi"
    [ -f $swi ] || { echo "File $swi not found"; return 3; }
 
