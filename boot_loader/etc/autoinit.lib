@@ -36,7 +36,7 @@ function run_init() {
       return 3
    }
 
-   swi=$(echo $SWI | sed 's/file://g')
+   swi=$(echo $SWI | sed "s|flash:|/mnt/flash|g")
    echo "Normalized SWI file is $swi"
    [ -f $swi ] || { echo "File $swi not found"; return 3; }
 
